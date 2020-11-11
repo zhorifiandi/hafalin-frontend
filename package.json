@@ -5,11 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prettier": "prettier --write --ignore-unknown ."
   },
   "dependencies": {
+    "@aksara-ui/core": "^1.0.0-canary.29",
+    "@aksara-ui/icons": "^1.0.0-canary.9",
     "next": "10.0.1",
+    "prettier": "^2.1.2",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "styled-components": "^5.2.1"
   }
 }
