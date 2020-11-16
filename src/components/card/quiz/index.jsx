@@ -7,28 +7,36 @@ import {
   Text,
 } from "@aksara-ui/core";
 
-const QuizChoices = ({ choices }) => {
+const QuizChoices = ({ answers, index, choices, handleAnswersChanged }) => {
   return (
     <Box>
-      <fieldset
-        id="choice"
-        onChange={(event) => console.log(event.target.value)}
-        style={{ border: 0 }}
-      >
-        {Object.keys(choices).map((keyChoice) => (
-          <>
-            <InputRadioLabel htmlFor="choice" mb="1rem">
-              <InputRadio
-                value={keyChoice}
-                id="choice"
-                name="choice"
-                style={{ marginRight: "0.5rem" }}
-              />
-              <Text>{choices[keyChoice]}</Text>
-            </InputRadioLabel>
-          </>
-        ))}
-      </fieldset>
+      <form>
+        <fieldset
+          id={`choice-${index}`}
+          value={answers[index]}
+          onChange={(event) => {
+            handleAnswersChanged(index, event.target.value);
+          }}
+          style={{ border: 0 }}
+        >
+          {Object.keys(choices).map((keyChoice) => (
+            <Box>
+              <InputRadioLabel htmlFor={`choice-${index}`} mb="1rem">
+                <InputRadio
+                  value={keyChoice}
+                  id={`choice-${index}`}
+                  name={`choice-${index}`}
+                  checked={answers[index] == keyChoice}
+                  style={{ marginRight: "0.5rem" }}
+                />
+                <Text>
+                  {keyChoice}. {choices[keyChoice]}
+                </Text>
+              </InputRadioLabel>
+            </Box>
+          ))}
+        </fieldset>
+      </form>
     </Box>
   );
 };
@@ -36,6 +44,8 @@ const QuizChoices = ({ choices }) => {
 const QuizCard = ({
   index,
   questionSet,
+  answers,
+  handleAnswersChanged,
   NextButton,
   PreviousButton,
   SubmitButton,
@@ -48,7 +58,12 @@ const QuizCard = ({
       <Heading scale="500" mb="2rem">
         {questionSet.question}
       </Heading>
-      <QuizChoices choices={questionSet.choices} />
+      <QuizChoices
+        answers={answers}
+        index={index}
+        choices={questionSet.choices}
+        handleAnswersChanged={handleAnswersChanged}
+      />
       <Box textAlign="right">
         <PreviousButton index={index} />
         <NextButton index={index} />

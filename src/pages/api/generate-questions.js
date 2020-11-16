@@ -26,13 +26,12 @@ export default async function handler(req, res) {
       {
         answer: "a",
         choices: {
-          a: "Selat Sunda dan Samudera Pasifik",
-          b: "Selat Sunda dan Samudera Indonesia",
-          c: "Selat Sunda dan Samudera Hindia",
-          d: "Selat Sunda dan Samudera Arktik",
+          a: "SBY",
+          b: "Jokowi",
+          c: "Gusdur",
+          d: "Ir. Soekarno",
         },
-        question:
-          "Pulau Sumatera sebelah selatan dan barat berbatasan dengan ....",
+        question: "Presiden pertama indonesia adalah ....",
       },
       {
         answer: "a",

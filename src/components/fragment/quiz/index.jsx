@@ -5,6 +5,16 @@ import QuizSubmissionFragment from "./submission";
 
 const QuizFragment = ({ questions }) => {
   const [page, setPage] = useState(0);
+  const [answers, setAnswers] = useState({});
+
+  const handleAnswersChanged = (index, newValue) => {
+    const newAnswers = {
+      ...answers,
+    };
+    newAnswers[index] = newValue;
+    setAnswers(newAnswers);
+  };
+
   const PreviousButton = ({ index }) => {
     if (index > 0) {
       return (
@@ -45,7 +55,8 @@ const QuizFragment = ({ questions }) => {
       return (
         <Button
           onClick={() => {
-            alert("mantap");
+            console.log("answers", answers);
+            alert(JSON.stringify(answers));
           }}
           variant="primary"
         >
@@ -66,6 +77,8 @@ const QuizFragment = ({ questions }) => {
           NextButton={NextButton}
           PreviousButton={PreviousButton}
           SubmitButton={SubmitButton}
+          answers={answers}
+          handleAnswersChanged={handleAnswersChanged}
         />
       ) : (
         <QuizSubmissionFragment />
