@@ -70,19 +70,28 @@ const QuizFragment = ({ questions }) => {
 
   return (
     <Box p="2rem" display="flex" alignItems="center" minHeight="100vh">
-      {page < questions.length ? (
-        <QuizCard
-          index={page}
-          questionSet={questions[page]}
-          NextButton={NextButton}
-          PreviousButton={PreviousButton}
-          SubmitButton={SubmitButton}
-          answers={answers}
-          handleAnswersChanged={handleAnswersChanged}
-        />
-      ) : (
-        <QuizSubmissionFragment />
-      )}
+        {
+            questions.map((question, index) => (
+                <>
+                { 
+                    index == page ? (
+                        <QuizCard
+                          index={page}
+                          questionSet={question}
+                          NextButton={NextButton}
+                          PreviousButton={PreviousButton}
+                          SubmitButton={SubmitButton}
+                          answers={answers}
+                          handleAnswersChanged={handleAnswersChanged}
+                        />
+                      ) : (
+                        <></>
+                      )
+                }
+                </>
+            ))
+        }
+      
     </Box>
   );
 };

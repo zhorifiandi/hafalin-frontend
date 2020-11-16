@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import {
   Box,
   Card,
   Heading,
   InputRadio,
   InputRadioLabel,
+  InputText,
   Text,
 } from "@aksara-ui/core";
 
@@ -41,6 +43,26 @@ const QuizChoices = ({ answers, index, choices, handleAnswersChanged }) => {
   );
 };
 
+const QuizBlankInput = ({ answers, index, choices, handleAnswersChanged }) => {
+    const [value, setValue] = useState(answers[index]);
+
+    return (
+        <Box mb="2rem">
+            <InputText 
+                id={`blank-input-${index}`}
+                name={`blank-input-${index}`}
+                value={value}
+                onChange={(event) => {
+                    console.log(index, event.target.value)
+                    setValue(event.target.value)
+                    handleAnswersChanged(index, event.target.value);
+                  }}
+                placeholder="Masukkan jawabanmu"
+            />
+        </Box>
+    )
+}
+
 const QuizCard = ({
   index,
   questionSet,
@@ -58,12 +80,21 @@ const QuizCard = ({
       <Heading scale="500" mb="2rem">
         {questionSet.question}
       </Heading>
-      <QuizChoices
+      {/* We're not using multiple choices yet */}
+      {/* <QuizChoices
+        answers={answers}
+        index={index}
+        choices={questionSet.choices}
+        handleAnswersChanged={handleAnswersChanged}
+      /> */}
+
+      <QuizBlankInput 
         answers={answers}
         index={index}
         choices={questionSet.choices}
         handleAnswersChanged={handleAnswersChanged}
       />
+
       <Box textAlign="right">
         <PreviousButton index={index} />
         <NextButton index={index} />
