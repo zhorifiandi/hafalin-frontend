@@ -10,19 +10,23 @@ const Home = () => {
   const [essay, setEssay] = useState("");
   const [isSubmiting, setSubmiting] = useState(false);
   const [isGenerated, setGenerated] = useState(false);
+  const [questionType, setQuestionType] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [evaluation, setEvaluation] = useState(null);
+  const [questionError, setQuestionError] = useState(null);
 
-  const handleEssaySubmission = async (essay) => {
+  const handleEssaySubmission = async (essay, qType) => {
     setSubmiting(true);
     setEssay(essay);
 
     try {
-      const result = await generateQuestions(essay);
+      setQuestionType(qType);
+      const result = await generateQuestions(essay, qType);
       setGenerated(true);
       setQuestions(result);
     } catch (err) {
       console.log(err);
+      setQuestionError(err);
     }
 
     setSubmiting(false);
@@ -30,7 +34,7 @@ const Home = () => {
 
   return (
     <Box bg="indigo01" minHeight="100vh" display="flex" justifyContent="center">
-      <Box bg="white" maxWidth="30em" width="100%">
+      <Box bg="#fefefe" maxWidth="30em" width="100%">
         {isSubmiting ? (
           <LoadingFragment />
         ) : isGenerated ? (
@@ -40,11 +44,12 @@ const Home = () => {
             <QuizFragment
               essay={essay}
               questions={questions}
+              questionType={questionType}
               setEvaluation={setEvaluation}
             />
           )
         ) : (
-          <HomeAndInputFragment handleEssaySubmission={handleEssaySubmission} />
+          <HomeAndInputFragment handleEssaySubmission={handleEssaySubmission} questionError={questionError} />
         )}
       </Box>
     </Box>

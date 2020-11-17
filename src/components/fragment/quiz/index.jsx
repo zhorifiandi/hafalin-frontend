@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Box, Button, Text } from "@aksara-ui/core";
+import { Box, Button, Heading, Text } from "@aksara-ui/core";
 import QuizCard from "../../card/quiz";
 import QuizSubmissionFragment from "./submission";
-import evaluateAnswers from "../../../connections/evaluations";
+import evaluateShortAnswers from "../../../connections/evaluations/short-answers";
+import evaluateMultipleChoices from "../../../connections/evaluations/multiple-choices";
 
-const QuizFragment = ({ essay, questions, setEvaluation }) => {
+const QuizFragment = ({ essay, questions, questionType, setEvaluation }) => {
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState({});
 
@@ -57,11 +58,15 @@ const QuizFragment = ({ essay, questions, setEvaluation }) => {
         <Button
           onClick={async () => {
             console.log("answers", answers);
-            // alert(JSON.stringify(answers));
-
+            
             const solutionSet = questions.map((question) => question.answer);
-            const evaluations = await evaluateAnswers(answers, solutionSet);
-            // alert(JSON.stringify(evaluations));
+            let evaluations;
+            if (questionType === 'short_answer') {
+              evaluations = await evaluateShortAnswers(answers, solutionSet);
+            } else {
+              evaluations = await evaluateMultipleChoices(answers, solutionSet);
+            }
+            
             setEvaluation(evaluations);
           }}
           variant="primary"
@@ -76,24 +81,36 @@ const QuizFragment = ({ essay, questions, setEvaluation }) => {
 
   return (
     <Box p="2rem" display="flex" alignItems="center" minHeight="100vh">
-      {questions.map((question, index) => (
-        <>
-          {index == page ? (
-            <QuizCard
-              index={page}
-              essay={essay}
-              questionSet={question}
-              NextButton={NextButton}
-              PreviousButton={PreviousButton}
-              SubmitButton={SubmitButton}
-              answers={answers}
-              handleAnswersChanged={handleAnswersChanged}
-            />
-          ) : (
-            <></>
-          )}
-        </>
-      ))}
+      <Box>
+        <Heading
+          scale="800"
+          mb="2rem"
+        >
+          {
+            questionType === "short_answer" ?
+              "Isian Singkat" : "Pilihan Ganda"
+          }
+        </Heading>
+        {(questions || []).map((question, index) => (
+          <>
+            {index == page ? (
+              <QuizCard
+                index={page}
+                essay={essay}
+                questionSet={question}
+                questionType={questionType}
+                NextButton={NextButton}
+                PreviousButton={PreviousButton}
+                SubmitButton={SubmitButton}
+                answers={answers}
+                handleAnswersChanged={handleAnswersChanged}
+              />
+            ) : (
+              <></>
+            )}
+          </>
+        ))}
+      </Box>
     </Box>
   );
 };

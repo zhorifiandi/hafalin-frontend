@@ -28,9 +28,9 @@ const EvaluationFragment = ({ evaluation }) => {
             </Box>
           </Card>
 
-          <Box p="2rem">
+          {/* <Box p="2rem">
             <Text>Debugging Purpose: {JSON.stringify(evaluation)}</Text>
-          </Box>
+          </Box> */}
         </Box>
         <Button
           variant="primary"

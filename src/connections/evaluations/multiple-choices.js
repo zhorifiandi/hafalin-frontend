@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export default async function evaluateAnswers(answerSet, solutionSet) {
-  const result = await axios.post("/api/evaluations", {
+export default async function evaluateMultipleChoices(answerSet, solutionSet) {
+  const result = await axios.post("/api/evaluations/multiple_choice", {
     answer_set: answerSet,
     solution_set: solutionSet,
   });

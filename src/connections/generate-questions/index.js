@@ -1,13 +1,12 @@
 import axios from "axios";
 
-export default async function generateQuestions(essay) {
-  const result = await axios.post("/api/questions/short_answer", {
+export default async function generateQuestions(essay, questionType) {
+  const result = await axios.post("/api/questions", {
     document: essay,
-    type: "short_answer",
-    max_questions: 5,
+    type: questionType,
+    max_questions: 9,
   });
 
-  const multipleChoices = result.data;
-
-  return multipleChoices;
+  const questions = result.data;
+  return questions;
 }
