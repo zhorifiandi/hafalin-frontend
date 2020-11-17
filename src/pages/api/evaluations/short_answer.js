@@ -7,8 +7,8 @@ export default async function handler(req, res) {
     const { answer_set, solution_set } = req.body;
     const evaluations = solution_set.map((possibleSolutions, index) => {
       const result = stringSimilarity.findBestMatch(
-        answer_set[index] || "",
-        possibleSolutions
+        (answer_set[index] || "").toLowerCase(),
+        possibleSolutions.map(solution => (solution || "").toLowerCase())
       );
       const { bestMatch } = result;
       return bestMatch.rating >= ACCURACY_THRESHOLD;
