@@ -82,9 +82,19 @@ const QuizFragment = ({ essay, questions, questionType, setEvaluation }) => {
   return (
     <Box p="2rem" display="flex" alignItems="center" minHeight="100vh">
       <Box>
-        <Heading scale="800" mb="2rem">
-          {questionType === "short_answer" ? "Isian Singkat" : "Pilihan Ganda"}
-        </Heading>
+        <Heading scale="800" mb="2rem"></Heading>
+        <Box display="flex" flexGrow="1" alignItems="center">
+          <Box p="1rem" mb="1rem" flexGrow="1">
+            <Heading scale="700" color="blue08">
+              {questionType === "short_answer"
+                ? "Isian Singkat"
+                : "Pilihan Ganda"}
+            </Heading>
+          </Box>
+          <Box p="2rem">
+            <img src="/quiz.svg" height="120px" style={{ margin: "auto" }} />
+          </Box>
+        </Box>
         {(questions || []).map((question, index) => (
           <>
             {index == page ? (

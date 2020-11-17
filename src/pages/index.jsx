@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <Box bg="indigo01" minHeight="100vh" display="flex" justifyContent="center">
-      <Box bg="#fefefe" maxWidth="30em" width="100%">
+      <Box bg="#fdfdfd" maxWidth="30em" width="100%">
         {isSubmiting ? (
           <LoadingFragment />
         ) : isGenerated ? (

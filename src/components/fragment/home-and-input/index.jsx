@@ -50,10 +50,19 @@ const HomeAndInputFragment = ({ handleEssaySubmission, questionError }) => {
 
   return (
     <Box p="1rem" display="flex" flexDirection="column" minHeight="100vh">
-      <Box p="1rem" mb="1rem">
-        <Heading color="blue10">hafalin</Heading>
-        <Text>by Tajong.ai</Text>
+      <Box display="flex" flexGrow="1" alignItems="center">
+        <Box p="1rem" mb="1rem" flexGrow="1">
+          <Heading color="blue08">hafalin</Heading>
+          <Heading scale="400">by Tajong.ai</Heading>
+          <Box>
+            <Text scale="200">Masukkan paragraf, Jawab quiznya!</Text>
+          </Box>
+        </Box>
+        <Box p="2rem">
+          <img src="/quiz.svg" height="150px" style={{ margin: "auto" }} />
+        </Box>
       </Box>
+
       <Box mt="auto" w="100%">
         <form
           onSubmit={(event) => {
@@ -61,17 +70,17 @@ const HomeAndInputFragment = ({ handleEssaySubmission, questionError }) => {
             event.preventDefault();
           }}
         >
-          <Card p="1rem" m="1rem 0" elevation="4">
-            <Box mb="0.5rem">
-              <Text>Masukkan Paragrafmu Disini</Text>
-            </Box>
+          <Card p="1rem" m="1rem 0" elevation="5">
+            <Heading color="blue09" mb="1rem" scale="400">
+              Masukkan Paragrafmu Disini
+            </Heading>
             <textarea
               rows="10"
               style={{
                 width: "100%",
                 maxWidth: "100%",
                 resize: "none",
-                borderColor: "rgba(0,0,0,0.3)",
+                borderColor: "rgba(0,0,0,0.5)",
               }}
               onChange={(event) => {
                 setEssay(event.target.value);

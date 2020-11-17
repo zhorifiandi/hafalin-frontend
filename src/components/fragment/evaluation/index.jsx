@@ -9,6 +9,9 @@ const EvaluationFragment = ({ evaluation }) => {
     <Box p="2rem" display="flex" alignItems="center" minHeight="100vh">
       <Box width="100%">
         <Box>
+          <Box p="2rem">
+            <img src="/score.svg" height="150px" style={{ margin: "auto" }} />
+          </Box>
           <Card mb="2rem" p="1.5rem" elevation="4" display="flex">
             <Box flexGrow="1">
               <Text>Skor Kamu adalah: </Text>
