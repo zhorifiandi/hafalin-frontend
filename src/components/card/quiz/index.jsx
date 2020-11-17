@@ -98,24 +98,22 @@ const QuizCard = ({
         <Heading scale="500" mb="2rem">
           {questionSet.question}
         </Heading>
-        
-        {
-          questionType === 'multiple_choice' ? (
-            <QuizChoices
-              answers={answers}
-              index={index}
-              choices={questionSet.choices}
-              handleAnswersChanged={handleAnswersChanged}
-            />
-          ) : (
-            <QuizBlankInput
-              answers={answers}
-              index={index}
-              choices={questionSet.choices}
-              handleAnswersChanged={handleAnswersChanged}
-            />
-          )
-        }
+
+        {questionType === "multiple_choice" ? (
+          <QuizChoices
+            answers={answers}
+            index={index}
+            choices={questionSet.choices}
+            handleAnswersChanged={handleAnswersChanged}
+          />
+        ) : (
+          <QuizBlankInput
+            answers={answers}
+            index={index}
+            choices={questionSet.choices}
+            handleAnswersChanged={handleAnswersChanged}
+          />
+        )}
 
         <Box textAlign="right">
           <PreviousButton index={index} />

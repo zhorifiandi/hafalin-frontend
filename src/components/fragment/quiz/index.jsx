@@ -58,15 +58,15 @@ const QuizFragment = ({ essay, questions, questionType, setEvaluation }) => {
         <Button
           onClick={async () => {
             console.log("answers", answers);
-            
+
             const solutionSet = questions.map((question) => question.answer);
             let evaluations;
-            if (questionType === 'short_answer') {
+            if (questionType === "short_answer") {
               evaluations = await evaluateShortAnswers(answers, solutionSet);
             } else {
               evaluations = await evaluateMultipleChoices(answers, solutionSet);
             }
-            
+
             setEvaluation(evaluations);
           }}
           variant="primary"
@@ -82,14 +82,8 @@ const QuizFragment = ({ essay, questions, questionType, setEvaluation }) => {
   return (
     <Box p="2rem" display="flex" alignItems="center" minHeight="100vh">
       <Box>
-        <Heading
-          scale="800"
-          mb="2rem"
-        >
-          {
-            questionType === "short_answer" ?
-              "Isian Singkat" : "Pilihan Ganda"
-          }
+        <Heading scale="800" mb="2rem">
+          {questionType === "short_answer" ? "Isian Singkat" : "Pilihan Ganda"}
         </Heading>
         {(questions || []).map((question, index) => (
           <>

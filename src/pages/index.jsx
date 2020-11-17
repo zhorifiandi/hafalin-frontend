@@ -49,7 +49,10 @@ const Home = () => {
             />
           )
         ) : (
-          <HomeAndInputFragment handleEssaySubmission={handleEssaySubmission} questionError={questionError} />
+          <HomeAndInputFragment
+            handleEssaySubmission={handleEssaySubmission}
+            questionError={questionError}
+          />
         )}
       </Box>
     </Box>
