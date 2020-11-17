@@ -29,7 +29,7 @@ const Home = () => {
   };
 
   return (
-    <Box bg="indigo01" height="100vh" display="flex" justifyContent="center">
+    <Box bg="indigo01" minHeight="100vh" display="flex" justifyContent="center">
       <Box bg="white" maxWidth="30em" width="100%">
         {isSubmiting ? (
           <LoadingFragment />

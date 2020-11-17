@@ -4,10 +4,10 @@ const ACCURACY_THRESHOLD = 0.8;
 
 export default async function handler(req, res) {
   try {
-    const { answer_set, solutions } = req.body;
-    const evaluations = solutions.map((possibleSolutions, index) => {
+    const { answer_set, solution_set } = req.body;
+    const evaluations = solution_set.map((possibleSolutions, index) => {
       const result = stringSimilarity.findBestMatch(
-        answer_set[index] || "",
+        (answer_set[index] || "").toLowerCase(),
         possibleSolutions
       );
       const { bestMatch } = result;
