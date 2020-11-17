@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Box, Button, Heading, Text } from "@aksara-ui/core";
+import { IconArrowRight } from "@aksara-ui/icons";
 
 const HomeAndInputFragment = ({ handleEssaySubmission }) => {
   const textAreaRef = useRef(null);
+  const [essay, setEssay] = useState("");
 
   return (
     <Box p="1rem" display="flex" flexDirection="column" minHeight="100vh">
@@ -28,10 +30,21 @@ const HomeAndInputFragment = ({ handleEssaySubmission }) => {
                 maxWidth: "100%",
                 resize: "none",
               }}
+              onChange={(event) => {
+                setEssay(event.target.value);
+              }}
               ref={textAreaRef}
             />
           </Box>
-          <Button type="submit" mt="1rem" variant="outline" width="100%">
+          <Button
+            disabled={essay.length === 0}
+            type="submit"
+            icon={IconArrowRight}
+            iconPosition="right"
+            mt="1rem"
+            variant="primary"
+            width="100%"
+          >
             Klik disini untuk memulai
           </Button>
         </form>
