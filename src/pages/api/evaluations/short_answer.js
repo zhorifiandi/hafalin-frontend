@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const { answer_set, solution_set } = req.body;
     const evaluations = solution_set.map((possibleSolutions, index) => {
       const result = stringSimilarity.findBestMatch(
-        (answer_set[index] || "").toLowerCase(),
+        answer_set[index] || "",
         possibleSolutions
       );
       const { bestMatch } = result;
