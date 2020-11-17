@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function generateQuestions(essay, questionType) {
   const result = await axios.post("/api/questions", {
-    document: essay,
+    document: essay.trim().replace(/(\r\n|\n|\r)/gm, ""),
     type: questionType,
     max_questions: 9,
   });
