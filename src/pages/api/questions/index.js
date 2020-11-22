@@ -3,7 +3,7 @@ import axios from "../../../connections/core/axios";
 
 import Bottleneck from "bottleneck";
 const limiter = new Bottleneck({
-  maxConcurrent: 5,
+  maxConcurrent: 2,
   minTime: 100,
 });
 
