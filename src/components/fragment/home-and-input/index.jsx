@@ -55,7 +55,7 @@ const HomeAndInputFragment = ({ handleEssaySubmission, questionError }) => {
           <Heading color="blue08">hafalin</Heading>
           <Heading scale="400">by Tajong.ai</Heading>
           <Box>
-            <Text scale="200">Masukkan paragraf, Jawab quiznya!</Text>
+            <Text scale="200">Masukkan paragraf, buat soal seketika!</Text>
           </Box>
         </Box>
         <Box p="2rem">
@@ -113,7 +113,7 @@ const HomeAndInputFragment = ({ handleEssaySubmission, questionError }) => {
             variant="primary"
             width="100%"
           >
-            Klik disini untuk memulai
+            Mulai buat soalmu!
           </Button>
         </form>
       </Box>
