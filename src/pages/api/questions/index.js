@@ -3,8 +3,8 @@ import axios from "../../../connections/core/axios";
 
 import Bottleneck from "bottleneck";
 const limiter = new Bottleneck({
-  maxConcurrent: 2,
-  minTime: 100,
+  maxConcurrent: 1,
+  minTime: 333,
 });
 
 const MAX_QUESTIONS = 10;
