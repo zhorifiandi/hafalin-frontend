@@ -13,7 +13,8 @@ const SENTENCE_CHUNK = 8;
 export default async function handler(req, res) {
   try {
     const sentences = req.body.document.split(".");
-    const sentenceChunks = _.chunk(sentences, SENTENCE_CHUNK);
+    // const sentenceChunks = _.chunk(sentences, SENTENCE_CHUNK);
+    const sentenceChunks = _.chunk(sentences, sentences.length);
     const paragraphs = sentenceChunks.map((sc) => {
       return sc.join(". ");
     });
