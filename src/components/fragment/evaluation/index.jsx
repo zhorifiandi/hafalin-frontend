@@ -1,6 +1,8 @@
+import { useRouter } from 'next/router'
 import { Box, Button, Card, Heading, Text } from "@aksara-ui/core";
 
 const EvaluationFragment = ({ evaluation }) => {
+  const router = useRouter()
   const correctAnswer = evaluation.reduce((acc, currentValue) => {
     return currentValue ? acc + 1 : acc;
   }, 0);
@@ -37,7 +39,7 @@ const EvaluationFragment = ({ evaluation }) => {
         </Box>
         <Button
           variant="primary"
-          onClick={() => window.location.reload()}
+          onClick={() => router.reload()}
           width="100%"
         >
           Kembali ke Home
