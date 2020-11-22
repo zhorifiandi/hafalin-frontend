@@ -91,7 +91,7 @@ const HomeAndInputFragment = ({ handleEssaySubmission, questionError }) => {
             {questionError === "NO_QUESTION_GENERATED" ? (
               // ToDo: Handle error message
               <InputMessage variant="error">
-                Harap masukkan paragraf yang lebih panjang
+                Tidak ada pertanyaan yang dapat dihasilkan. Harap masukkan paragraf yang lebih panjang
               </InputMessage>
             ) : questionError ? (
               <InputMessage variant="error">
