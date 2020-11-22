@@ -19,6 +19,7 @@ axios.interceptors.response.use(
   },
   // Handle 4xx & 5xx responses
   (x) => {
+    console.error('error', x);
     console.error(
       `Execution time for: ${x.config.url} - ${
         new Date().getTime() - x.config.meta.requestStartedAt
