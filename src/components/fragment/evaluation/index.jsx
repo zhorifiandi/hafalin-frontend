@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { Box, Button, Card, Heading, Text } from "@aksara-ui/core";
 
 const EvaluationFragment = ({ evaluation }) => {
-  const router = useRouter()
+  const router = useRouter();
   const correctAnswer = evaluation.reduce((acc, currentValue) => {
     return currentValue ? acc + 1 : acc;
   }, 0);
@@ -37,11 +37,7 @@ const EvaluationFragment = ({ evaluation }) => {
             <Text>Debugging Purpose: {JSON.stringify(evaluation)}</Text>
           </Box> */}
         </Box>
-        <Button
-          variant="primary"
-          onClick={() => router.reload()}
-          width="100%"
-        >
+        <Button variant="primary" onClick={() => router.reload()} width="100%">
           Kembali ke Home
         </Button>
       </Box>

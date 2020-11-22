@@ -33,8 +33,8 @@ const Home = () => {
       setGenerated(true);
       setQuestions(result);
     } catch (err) {
-      console.log(err);
-      setQuestionError(err);
+      const errorMessage = err?.response?.data?.error || "UNMAPPED_ERROR";
+      setQuestionError(errorMessage);
     }
 
     setSubmiting(false);

@@ -14,6 +14,7 @@ import { IconArrowRight } from "@aksara-ui/icons";
 const SelectQuestionType = ({ questionType, setQuestionType }) => {
   return (
     <fieldset
+      value={questionType}
       onChange={(event) => {
         setQuestionType(event.target.value);
       }}
@@ -87,11 +88,15 @@ const HomeAndInputFragment = ({ handleEssaySubmission, questionError }) => {
               }}
               ref={textAreaRef}
             />
-            {questionError ? (
+            {questionError === "NO_QUESTION_GENERATED" ? (
               // ToDo: Handle error message
               <InputMessage variant="error">
-                Harap ulangi permintaan atau masukkan paragraf yang lebih
-                panjang
+                Harap masukkan paragraf yang lebih panjang
+              </InputMessage>
+            ) : questionError ? (
+              <InputMessage variant="error">
+                Ada kesalahan dalam sistem kami, harap mengulangi dalam beberapa
+                saat.
               </InputMessage>
             ) : (
               <></>

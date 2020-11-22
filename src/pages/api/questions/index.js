@@ -8,7 +8,7 @@ const limiter = new Bottleneck({
 });
 
 const MAX_QUESTIONS = 10;
-const SENTENCE_CHUNK = 8;
+// const SENTENCE_CHUNK = 8;
 
 export default async function handler(req, res) {
   try {
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
     console.log("questions", questions);
 
     if (questions.length <= 1) {
-      throw new Error("No questions generated");
+      throw new Error("NO_QUESTION_GENERATED");
     }
 
     const randomQuestions = questions
