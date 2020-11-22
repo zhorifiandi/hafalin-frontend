@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Box } from "@aksara-ui/core";
 import HomeAndInputFragment from "../components/fragment/home-and-input";
 import LoadingFragment from "../components/fragment/loading";
@@ -15,7 +15,15 @@ const Home = () => {
   const [evaluation, setEvaluation] = useState(null);
   const [questionError, setQuestionError] = useState(null);
 
+  const forceUpdate = () => {
+    setEssay("");
+    setQuestions([]);
+    setEvaluation(null);
+    setQuestionError(null);
+  };
+
   const handleEssaySubmission = async (essay, qType) => {
+    forceUpdate();
     setSubmiting(true);
     setEssay(essay);
 

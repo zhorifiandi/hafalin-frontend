@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../core/axios";
 
 export default async function evaluateShortAnswers(answerSet, solutionSet) {
   const result = await axios.post("/api/evaluations/short_answer", {
